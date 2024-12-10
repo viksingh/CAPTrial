@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "@sap/cds-rfc": "^1.2.1"
+  },
+
+  "requires": {
+    "SYS": {
+      "kind": "rfc",
+      "model": "srv/external/SYS",
+      "[production]": {
+        "credentials": {
+          "destination": "SYS"
+        }
+      }
+    }
+  }  
+}
