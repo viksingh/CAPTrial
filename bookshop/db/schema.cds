@@ -1,4 +1,4 @@
-namespace  org.saki;
+namespace org.saki;
 
 aspect cuid {
     key ID : UUID;
@@ -6,25 +6,24 @@ aspect cuid {
 
 
 entity Books : cuid {
-    title : String;
+    title  : String;
     author : Association to Authors;
 }
 
 
 entity Authors : cuid {
-    name : String;
+    name  : String;
     books : Association to many Books
-     on books.author = $self
+                on books.author = $self
 }
+
 
 entity Orders : cuid {
     comment : String;
-    Items : Composition of many OrderItems on Items.parent = $self;
-}
+    Items   : Composition of many {
+                  key pos      : Integer;
+                      quantity : Integer;
+                      book     : Association to Books;
 
-entity OrderItems { //access through Order only
-    key parent : Association to Orders;
-    key pos: Integer;
-    quantity : Integer;
-
+              }
 }
